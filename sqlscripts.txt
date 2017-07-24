@@ -1,0 +1,87 @@
+create database samazon;
+use samazon;
+
+create table products(
+	productid int(3) NOT NULL primary key AUTO_INCREMENT,
+    productname varchar(100),
+    description varchar(300),
+    price float,
+    productcount int(3),
+    imageURL varchar(50)
+);
+
+insert into products (productname,description,price,productcount,imageURL) values
+('Proraso After Shave', 'The finest aftershave known to man. Attracts women immediately.', 29.99, 53, 'images/shavingcream.jpg');
+
+insert into products (productname,description,price,productcount,imageURL) values
+('Parker Badger Brush', 'Badger Brush made from Ancient Badger Hairs acquired in Serbia. Guaranteed clean shave every time.', 19.99, 33, 'images/badgerbrush.jpg');
+
+insert into products (productname,description,price,productcount,imageURL) values
+('Brylcreem', 'Brylcreem, the only creem for the gentleman in you. Creemy goodness, guaranteed.', 14.99, 20, 'images/brylcreem.jpg'
+);
+
+insert into products (productname,description,price,productcount,imageURL) values
+('Gillette Mach 3 Cartridges', 'Refill Cartridges for the Gillette Mach 3. 12 count. Nothing special about these.', 2.99, 156, 'images/cartridges.jpg'
+);
+
+insert into products (productname,description,price,productcount,imageURL) values
+('Brut Cologne', 'This cologne was made from the sweat of grizzly bears after we wrestled them with our bare hands.', 34.99, 66, 'images/cologne.jpg'
+);
+
+insert into products (productname,description,price,productcount,imageURL) values
+('Gillette Mach 3 Razor', 'Only wimpy men use these. If you are cheap and not manly, this is the razor for you.', 4.99, 366, 'images/mach3.jpg'
+);
+
+insert into products (productname,description,price,productcount,imageURL) values
+('Badger Pre-Shave Oil', 'Because sometimes you just need to apply more oil to your face.', 23.99, 51, 'images/preshave.png'
+);
+
+insert into products (productname,description,price,productcount,imageURL) values
+('Dave\'s Safety Razor', 'No one understands safety better than a Wolf. Stay safe with this safety razor.', 13.99, 75, 'images/safetyrazor.jpg'
+);
+
+insert into products (productname,description,price,productcount,imageURL) values
+('Gentleman Jon Complete Shave Kit', 'This shave kit is everything you need to become a true gentleman, like Jon.', 49.99, 35, 'images/shavekit.jpg'
+);
+
+insert into products (productname,description,price,productcount,imageURL) values
+('Caffeinated Shave Cream', 'A cup of coffee simply isn\'t enough. If you want to be a real man, you\'ll shave with caffeine too.', 14.99, 78, 'images/shavingcream.jpg'
+);
+
+insert into products (productname,description,price,productcount,imageURL) values
+('Barbasol Shave Cream', 'Basic Shaving Cream. You\'re better off buying the caffeinated stuff instead.', 3.99, 478, 'images/shavingcream2.jpg'
+);
+
+insert into products (productname,description,price,productcount,imageURL) values
+('Straight Razor', 'Stainless Steel Straight Razor. Perfect for slitting throats. Decent for Shaving.', 9.99, 162, 'images/straightrazor.jpg'
+);
+
+insert into products (productname,description,price,productcount,imageURL) values
+('Phillips Trimmer', 'The finest in trimming technology, perfect for trimming hair, cutting grass, and chopping wood.', 19.99, 212, 'images/trimmer.jpg'
+);
+
+insert into products (productname,description,price,productcount,imageURL) values
+('Respect The Stache T-Shirt', 'Respect The Stache. Enough said.', 14.99, 236, 'images/tshirt.jpg'
+);
+
+insert into products (productname,description,price,productcount,imageURL) values
+('Dalmore Whiskey', 'Legendary Whiskey. May not be purchased by anyone who is under 21, has not wrestled a bear, deadlifts less than 400 lbs, or is named "Srikant".', 499.99, 3, 'images/whiskey.jpg'
+);
+
+create table cart(
+	id int(8) NOT NULL primary key AUTO_INCREMENT,
+    productid int(3),
+    quantity int(3),
+    userid int(5),
+    foreign key (productid) references products(productid)
+);
+
+create table user(
+	userid int(5) NOT NULL primary key AUTO_INCREMENT,
+    email varchar(50),
+    pw varchar(50),
+    username varchar(50)
+);
+
+insert into user (email, pw, username) values ("tsohrab8@gmail.com","password","Taimur");
+
