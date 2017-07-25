@@ -18,6 +18,7 @@
 		</form>
 		<p/>
 		<a href="register.jsp">Don't have an account? Click here to sign up! It's free!</a>
+		<p>${message}</p>
 	</div>
 </body>
 </html>

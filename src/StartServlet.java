@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import customTools.DbCart;
 import customTools.DbProduct;
-import model.Cart;
+//import model.Cart;
 import model.Product;
 
 /**

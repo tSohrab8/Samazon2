@@ -15,16 +15,20 @@ public class Cart implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 
 	private int quantity;
-
-	private int userid;
 
 	//bi-directional many-to-one association to Product
 	@ManyToOne
 	@JoinColumn(name="productid")
 	private Product product;
+
+	//bi-directional many-to-one association to Userorder
+	@ManyToOne
+	@JoinColumn(name="orderid")
+	private Userorder userorder;
 
 	public Cart() {
 	}
@@ -45,20 +49,20 @@ public class Cart implements Serializable {
 		this.quantity = quantity;
 	}
 
-	public int getUserid() {
-		return this.userid;
-	}
-
-	public void setUserid(int userid) {
-		this.userid = userid;
-	}
-
 	public Product getProduct() {
 		return this.product;
 	}
 
 	public void setProduct(Product product) {
 		this.product = product;
+	}
+
+	public Userorder getUserorder() {
+		return this.userorder;
+	}
+
+	public void setUserorder(Userorder userorder) {
+		this.userorder = userorder;
 	}
 
 }

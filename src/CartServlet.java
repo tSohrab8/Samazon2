@@ -12,8 +12,10 @@ import javax.servlet.http.HttpSession;
 
 import customTools.DbCart;
 import customTools.DbProduct;
-import model.Cart;
+import customTools.DbUserorder;
+//import model.Cart;
 import model.Product;
+import model.User;
 
 /**
  * Servlet implementation class CartServlet
@@ -37,44 +39,46 @@ public class CartServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		
-
-		HttpSession session = request.getSession();
-		String nextURL;
-		
-	    if (session.getAttribute("user")==null){
-	        //http://stackoverflow.com/questions/13638446/checking-servlet-session-attribute-value-in-jsp-file
-	        nextURL = "/login.jsp";
-	        response.sendRedirect(request.getContextPath() + nextURL);
-	        return;//return prevents an error; Don't believe me? Take it out.
-	    }
-		
-		int remove = Integer.parseInt(request.getParameter("remove"));
-		
-		if (remove != 0){
-			DbCart.delete(DbCart.getCart(remove));
-			List<Cart> shoppingCart = DbCart.listOfCarts();
-			session.setAttribute("shoppingCart", shoppingCart);
-			response.sendRedirect(request.getContextPath() + "/cart.jsp");
-			//getServletContext().getRequestDispatcher("/cart.jsp").forward(request,response);
-			return;
-		}
-		
-		int productid = Integer.parseInt(request.getParameter("productid"));
-		int quantity = Integer.parseInt(request.getParameter("quantity"));
-		
-		Cart c = new Cart();
-		Product p = DbProduct.getProduct(productid);
-		
-		c.setProduct(p);
-		c.setQuantity(quantity);
-		c.setUserid(7);
-		DbCart.insert(c);
-		
-		List<Cart> shoppingCart = DbCart.listOfCarts();
-		
-		session.setAttribute("shoppingCart", shoppingCart);
-		getServletContext().getRequestDispatcher("/cart.jsp").forward(request,response);
-		
+//		HttpSession session = request.getSession();
+//		String nextURL;
+//		
+//	    if (session.getAttribute("user") == null){
+//	        //http://stackoverflow.com/questions/13638446/checking-servlet-session-attribute-value-in-jsp-file
+//	        nextURL = "/login.jsp";
+//	        response.sendRedirect(request.getContextPath() + nextURL);
+//	        return;//return prevents an error; Don't believe me? Take it out.
+//	    }
+//	    
+//		User u = (User) session.getAttribute("user");
+//		int id = u.getUserid();
+//		int orderid = u.getCurrentorderid();
+//		
+//		if (request.getParameter("remove") != null){
+//			int remove = Integer.parseInt(request.getParameter("remove"));
+//			DbCart.delete(DbCart.getCart(remove));
+//		}
+//		
+//		if (request.getParameter("remove") != null){
+//			int remove = Integer.parseInt(request.getParameter("remove"));
+//			DbCart.delete(DbCart.getCart(remove));
+//		}
+//		
+//		if ((request.getParameter("productid") != null) && (request.getParameter("quantity") != null)){
+//			int productid = Integer.parseInt(request.getParameter("productid"));
+//			int quantity = Integer.parseInt(request.getParameter("quantity"));
+//			Cart c = new Cart();
+//			Product p = DbProduct.getProduct(productid);
+//			c.setProduct(p);
+//			c.setQuantity(quantity);
+//			c.setUserorder(DbUserorder.getUserOrder(orderid));
+//	
+//			DbCart.insert(c);
+//		}
+//		
+//		List<Cart> shoppingCart = DbCart.listOfCarts(id);
+//		session.setAttribute("shoppingCart", shoppingCart);
+//		getServletContext().getRequestDispatcher("/cart.jsp").forward(request,response);
+//		
 	}
 
 	/**

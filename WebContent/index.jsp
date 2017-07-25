@@ -34,7 +34,7 @@
                 <div class="list-group">
                     <a href="/Samazon2" class="list-group-item">Browse Products</a>
                     <a href="profile.jsp" class="list-group-item">My Profile</a>
-                    <a href="cart.jsp" class="list-group-item">My Shopping Cart</a>
+                    <a href="CartServlet" class="list-group-item">My Shopping Cart</a>
                     <a href="#" class="list-group-item">My Order History</a>
                 </div>
             </div>

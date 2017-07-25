@@ -5,6 +5,7 @@
 		<class>model.Cart</class>
 		<class>model.Product</class>
 		<class>model.User</class>
+		<class>model.Userorder</class>
 		<exclude-unlisted-classes>false</exclude-unlisted-classes>
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/samazon2"/>

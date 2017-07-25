@@ -1,35 +1,38 @@
 package customTools;
 
-import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
-import javax.persistence.TypedQuery;
 
-//import model.Cart;
+import model.Userorder;
 
-public class DbCart {
-//	
-//	public static Cart getCart(int cartID)
-//	{
-//		EntityManager em = DbUtil.getEmFactory().createEntityManager();
-//		Cart cart = em.find(Cart.class, cartID);
-//		return cart;		
-//	}
-//	
-//	public static void insert(Cart cart) {
-//		EntityManager em = DbUtil.getEmFactory().createEntityManager();
-//		EntityTransaction trans = em.getTransaction();
-//		try {
-//			trans.begin();
-//			em.persist(cart);
-//			trans.commit();
-//		} catch (Exception e) {
-//			trans.rollback();
-//		} finally {
-//			em.close();
-//		}
-//	}
+
+public class DbUserorder {
+	
+	public static Userorder getUserOrder(int orderID)
+	{
+		EntityManager em = DbUtil.getEmFactory().createEntityManager();
+		Userorder userorder = em.find(Userorder.class, orderID);
+		return userorder;		
+	}
+	
+	public static void insert(Userorder u) {
+		EntityManager em = DbUtil.getEmFactory().createEntityManager();
+		EntityTransaction trans = em.getTransaction();
+		try {
+			trans.begin();
+			em.persist(u);
+			trans.commit();
+		} catch (Exception e) {
+			trans.rollback();
+		} finally {
+			em.close();
+		}
+	}
+	
+	public static int getCount(){
+		EntityManager em = DbUtil.getEmFactory().createEntityManager();
+		return (Integer)em.createQuery("select max(u.orderid) from Userorder u").getSingleResult();
+	}
 //
 //	public static void update(Cart cart) {
 //		EntityManager em = DbUtil.getEmFactory().createEntityManager();
